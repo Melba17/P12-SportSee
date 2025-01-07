@@ -1,8 +1,4 @@
-# Node.js dependencies
-backend/node_modules/
-frontend/node_modules/
-backend/dist/
-frontend/dist/
-
-# IDE files
+# Exclusions générales
 .vscode/
+
+# Les exclusions spécifiques sont gérées dans backend/.gitignore et frontend/.gitignore
