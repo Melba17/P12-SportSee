@@ -33,6 +33,10 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      // Désactiver la règle obligeant React dans le scope JSX
+      'react/react-in-jsx-scope': 'off',
+      // Supprimer les avertissements pour React comme variable inutilisée
+      'no-unused-vars': ['error', { varsIgnorePattern: 'React' }],
     },
   },
 ]
