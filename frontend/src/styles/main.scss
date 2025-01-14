@@ -1,0 +1,13 @@
+// Import des styles des composants
+@use './components/header';
+@use './components/sideBar';
+@use './components/hello';
+
+// Import du style général
+@use './utils/base';
+
+// Import des styles des pages
+@use './pages/error404';
+
+// Import de la police Roboto
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');

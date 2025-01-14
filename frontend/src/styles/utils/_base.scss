@@ -1,0 +1,13 @@
+// Import des utilitaires
+@use './variables' as vars;
+
+// Style global
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  font-family: vars.$font-primary, vars.$font-secondary;
+}

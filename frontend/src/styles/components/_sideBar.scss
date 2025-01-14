@@ -1,0 +1,30 @@
+.sidebar {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 117px;
+    height: 100%;
+    background-color: black;
+    gap: 100px;
+
+    .icons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 250px;
+        gap: 20px;
+    }
+    
+    p {
+        color: white;
+        font-size: 12px;
+        writing-mode: vertical-rl; /* Rend le texte vertical */
+        transform: rotate(180deg); /* Inverse le sens pour que le texte monte */
+        text-align: center; 
+        margin-top: 80px;
+        margin-bottom: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

@@ -6,7 +6,7 @@
 export function formatUserMainData(userData) {
     return {
         id: userData.id,
-        name: userData.userInfos.firstName,
+        firstName: userData.userInfos.firstName,
         lastName: userData.userInfos.lastName,
         age: userData.userInfos.age,
         score: userData.todayScore || userData.score, // Gestion des deux noms possibles

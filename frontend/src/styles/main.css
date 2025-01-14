@@ -1,1 +1,137 @@
-/*# sourceMappingURL=main.css.map */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  height: 91px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+.header img {
+  margin-left: 25px;
+}
+.header nav {
+  display: flex;
+  gap: 200px;
+  color: white;
+  font-size: 24px;
+  font-weight: 400;
+  margin-right: 75px;
+}
+@media screen and (max-width: 1285px) {
+  .header nav {
+    gap: 150px;
+    margin-right: 50px;
+  }
+}
+@media screen and (max-width: 1150px) {
+  .header nav {
+    gap: 100px;
+    margin-right: 50px;
+  }
+}
+
+.sidebar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 117px;
+  height: 100%;
+  background-color: black;
+  gap: 100px;
+}
+.sidebar .icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 250px;
+  gap: 20px;
+}
+.sidebar p {
+  color: white;
+  font-size: 12px;
+  writing-mode: vertical-rl; /* Rend le texte vertical */
+  transform: rotate(180deg); /* Inverse le sens pour que le texte monte */
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hello {
+  position: absolute;
+}
+.hello h1 {
+  font-size: 3rem;
+  margin-left: 200px;
+  margin-top: 40px;
+}
+.hello .name {
+  color: red;
+}
+.hello p {
+  margin-left: 200px;
+  margin-top: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif, Arial, sans-serif;
+}
+
+.error404 {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+  margin-left: 350px;
+}
+@media screen and (max-width: 1285px) {
+  .error404 {
+    margin-left: 250px;
+  }
+}
+@media screen and (max-width: 1150px) {
+  .error404 {
+    margin-left: 200px;
+  }
+}
+.error404__title {
+  font-size: 15rem;
+  color: black;
+}
+.error404__group {
+  height: 165px;
+}
+.error404__message {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: black;
+  margin-top: 4.5rem;
+  margin-bottom: 7rem;
+}
+@media screen and (max-width: 1150px) {
+  .error404__message {
+    margin-left: 200px;
+  }
+}
+.error404__link {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: black;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+.error404__link:hover {
+  color: red;
+  cursor: pointer;
+}/*# sourceMappingURL=main.css.map */

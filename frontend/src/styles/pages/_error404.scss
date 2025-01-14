@@ -1,0 +1,51 @@
+.error404 {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 70px;
+      margin-left: 350px;
+
+      @media screen and (max-width: 1285px) {
+        margin-left: 250px;
+      }
+
+      @media screen and (max-width: 1150px) {
+        margin-left: 200px;
+      }
+    
+      &__title {
+        font-size: 15rem; 
+        color: black;
+      }
+
+      &__group {
+        height: 165px;
+      }
+    
+      &__message {
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: black;
+        margin-top: 4.5rem;
+        margin-bottom: 7rem;
+
+        @media screen and (max-width: 1150px) {
+          margin-left: 200px;
+        }
+      }
+    
+      &__link {
+        font-size: 1.125rem;
+        font-weight: 500;
+        color: black;
+        text-decoration: underline;
+        transition: color 0.3s ease;
+  
+        &:hover {
+          color: red;
+          cursor: pointer;
+        }
+      }
+    }
