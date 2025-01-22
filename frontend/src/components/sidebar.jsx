@@ -1,3 +1,9 @@
+/**
+ * Composant SideBar
+ * Affiche une barre latérale contenant des icônes d'activités sportives et un message de copyright.
+ *
+ * @returns {JSX.Element} La barre latérale avec les icônes et le texte de copyright.
+ */
 function SideBar() {
     return (
         <div className="sidebar">

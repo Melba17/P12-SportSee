@@ -10,7 +10,12 @@ export function formatUserMainData(userData) {
         lastName: userData.userInfos.lastName,
         age: userData.userInfos.age,
         score: userData.todayScore || userData.score, // Gestion des deux noms possibles
-        keyData: userData.keyData,
+        keyData: {
+            Calories: userData.keyData.calorieCount,
+            Protéines: userData.keyData.proteinCount,
+            Glucides: userData.keyData.carbohydrateCount,
+            Lipides: userData.keyData.lipidCount,
+        },
     };
 }
 
@@ -20,10 +25,10 @@ export function formatUserMainData(userData) {
  * @returns {Array<Object>} Données formatées
  */
 export function formatUserActivityData(activityData) {
-    return activityData.sessions.map(session => ({
-        date: session.day,
-        weight: session.kilogram,
-        caloriesBurned: session.calories,
+    return activityData.sessions.map((session, index) => ({
+        day: (index + 1).toString(), // L'index de la méthode map() commence à 0. En ajoutant + 1, on obtient un affichage basé sur 1, 2, 3 etc..
+        kilogram: session.kilogram,
+        calories: session.calories,
     }));
 }
 
@@ -33,7 +38,7 @@ export function formatUserActivityData(activityData) {
  * @returns {Array<Object>} Données formatées
  */
 export function formatUserAverageSessionsData(averageData) {
-    const daysMapping = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+    const daysMapping = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
 
     return averageData.sessions.map(session => ({
         // Puisque daysMapping utilise un index basé sur 0, et que session.day commence à 1, on soustrait 1 à session.day pour obtenir le bon index dans le tableau daysMapping
@@ -48,10 +53,20 @@ export function formatUserAverageSessionsData(averageData) {
  * @returns {Object} Données formatées
  */
 export function formatUserPerformanceData(performanceData) {
+    // Mappage des types en anglais vers leurs équivalents en français
     const kindMapping = performanceData.kind;
+    const frenchTranslation = {
+        cardio: 'Cardio',
+        energy: 'Énergie',
+        endurance: 'Endurance',
+        strength: 'Force',
+        speed: 'Vitesse',
+        intensity: 'Intensité',
+    };
 
+    // Formate et traduit les données
     return performanceData.data.map(perf => ({
-        type: kindMapping[perf.kind], // Associe la description à chaque type
+        type: frenchTranslation[kindMapping[perf.kind]] || kindMapping[perf.kind], // Traduction en français ou valeur par défaut
         value: perf.value,
     }));
 }

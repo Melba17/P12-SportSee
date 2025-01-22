@@ -1,3 +1,9 @@
+/**
+ * Composant Header
+ * Affiche l'en-tête de l'application avec un logo et un menu de navigation.
+ *
+ * @returns {JSX.Element} L'en-tête avec le logo et les liens de navigation.
+ */
 function Header() {
     return (
         <header className="header">

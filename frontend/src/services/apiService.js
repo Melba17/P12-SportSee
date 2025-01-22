@@ -1,10 +1,11 @@
-import { formatUserMainData } from './dataFormatter';
+import { formatUserMainData, formatUserActivityData, formatUserAverageSessionsData, formatUserPerformanceData } from './dataFormatter';
 
 ///// APPELS API AVEC UTILISATION DES ENDPOINTS MIS À DISPOSITION PAR LE BACKEND //////
 
 /**
  * Effectue une requête fetch, vérifie la réponse, et applique un formateur si les données sont valides.
  * 
+ * @async
  * @param {string} url - URL de l'API à appeler.
  * @param {Function} formatter - Fonction de formatage des données.
  * @returns {Promise<Object|Array|null>} Données formatées ou `null` en cas d'erreur.
@@ -32,10 +33,42 @@ async function fetchAndFormatData(url, formatter) {
 /**
  * Récupère les données principales d'un utilisateur depuis l'API et les formate.
  * 
+ * @async
  * @param {number} userId - ID de l'utilisateur.
- * @returns {Promise<Object|null>} Données formatées ou `null` en cas d'erreur.
+ * @returns {Promise<Object|null>} Données formatées.
  */
 export async function getUserMainData(userId) {
     const url = `http://localhost:3000/user/${userId}`;
     return fetchAndFormatData(url, formatUserMainData);
+}
+/**
+ * Récupère les données d'activité d'un utilisateur depuis l'API et les formate.
+ * 
+ * @async
+ * @param {number} userId - ID de l'utilisateur.
+ * @returns {Promise<Array<Object>|null>} Données formatées.
+ */
+export async function getUserActivityData(userId) {
+    const url = `http://localhost:3000/user/${userId}/activity`;
+    return fetchAndFormatData(url, formatUserActivityData);
+}
+/**
+ * Récupère les données des sessions moyennes d'un utilisateur depuis l'API et les formate.
+ * 
+ * @param {number} userId - ID de l'utilisateur.
+ * @returns {Promise<Array<Object>|null>} Données formatées ou `null` en cas d'erreur.
+ */
+export async function getUserAverageSessionsData(userId) {
+    const url = `http://localhost:3000/user/${userId}/average-sessions`;
+    return fetchAndFormatData(url, formatUserAverageSessionsData);
+}
+/**
+ * Récupère les données de performance d'un utilisateur depuis l'API et les formate.
+ * 
+ * @param {number} userId - ID de l'utilisateur.
+ * @returns {Promise<Array<Object>|null>} Données formatées ou `null` en cas d'erreur.
+ */
+export async function getUserPerformanceData(userId) {
+    const url = `http://localhost:3000/user/${userId}/performance`;
+    return fetchAndFormatData(url, formatUserPerformanceData);
 }

@@ -1,0 +1,26 @@
+.average-chart {
+  position: absolute;
+  top: 815px;
+  left: 18.5%;
+  width: 18%;
+  transform: translate(-25%, -50%);
+  background-color: #ff0000;
+  border-radius: 5px; 
+
+  @media screen and (max-width: 1285px) {
+    left: 20%;
+  }
+  @media screen and (max-width: 1150px) {
+    left: 23%;
+  }
+ 
+}
+
+/** InfoBulle **/
+.custom-tooltip-two {
+  background: #FFFFFF;
+  color: #000;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 500;
+}

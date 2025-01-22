@@ -15,7 +15,6 @@ function App() {
             <Routes>
                 {/* Route dynamique pour le tableau de bord selon l'Id utilisateur */}
                 <Route path="/:userId" element={<DashBoard />} />
-                
                 {/* Redirection vers une page d'erreur 404 pour toutes les autres URL non définies ici */}
                 <Route path="*" element={<Error404 />} />
             </Routes>

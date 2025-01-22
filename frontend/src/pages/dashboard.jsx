@@ -1,49 +1,73 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Hello from "../components/hello";
-import { fetchUserMainData } from "../services/toggleDataService";
+import ActivityChart from "../components/activityChart";
+import AverageChart from "../components/averageChart";
+import PerformanceChart from "../components/performanceChart";
+import { fetchUserMainData, fetchUserActivityData, fetchUserAverageSessionsData, fetchUserPerformanceData } from "../services/toggleDataService";
 import Error404 from "../pages/error404";
+
 
 /**
  * Composant DashBoard
- * Ce composant affiche soit un message d'erreur (page 404) en cas de problème, 
- * soit un message personnalisé via le composant Hello en fonction des données utilisateur.
- * 
- * @returns {JSX.Element} Composant DashBoard contenant Hello ou Error404.
+ * Affiche le tableau de bord utilisateur, incluant les graphiques, les données clés,
+ * et un message d'erreur en cas de problème de récupération des données.
+ *
+ * @returns {JSX.Element} Le tableau de bord utilisateur ou une page d'erreur 404.
  */
 function DashBoard() {
-
-    ////// CONFIGURATION DE LA LOGIQUE DU COMPOSANT = "Back ou logique métier" ////// 
-    const { userId } = useParams(); // Récupération de l'ID utilisateur depuis les paramètres de l'URL
-    const [userData, setUserData] = useState(null); // État pour stocker les données utilisateur
-    const [isError, setIsError] = useState(false); // État pour gérer les erreurs
+    ////// CONFIGURATION DE LA LOGIQUE DU COMPOSANT = "Back" ou logique métier //////
+    const { userId } = useParams();
+    const [userData, setUserData] = useState(null);
+    const [activityData, setActivityData] = useState(null);
+    const [averageData, setAverageData] = useState(null);
+    const [performanceData, setPerformanceData] = useState(null);
+    const [isError, setIsError] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
-            const data = await fetchUserMainData(parseInt(userId)); // Appel pour récupérer les données utilisateur
-            if (!data) {
-                setIsError(true); // Si aucune donnée n'est trouvée, activer l'état d'erreur
-            } else {
-                setUserData(data); // Assigner les données utilisateur si elles existent
+            try {
+                // Promise.all permet de regrouper les appels réseau, rendant la logique plus concise et lisible
+                const [data, activity, average, performance] = await Promise.all([
+                    fetchUserMainData(parseInt(userId)),
+                    fetchUserActivityData(parseInt(userId)),
+                    fetchUserAverageSessionsData(parseInt(userId)),
+                    fetchUserPerformanceData(parseInt(userId)),
+                ]);
+                // utilisation de.some() pour éviter les répétitions
+                if ([data, activity, average, performance].some(item => !item)) {
+                    setIsError(true);
+                } else {
+                    setUserData(data);
+                    setActivityData(activity);
+                    setAverageData(average);
+                    setPerformanceData(performance);
+                }
+            } catch {
+                setIsError(true);
             }
         }
         fetchData();
-    }, [userId]); // Ce tableau indique à React de réexécuter le useEffect uniquement si la valeur de userId change
-    
+    }, [userId]);
+
 
     ////// LOGIQUE DU RENDU VISUEL DU COMPOSANT = "Front" //////
     if (isError) {
-        // Affichage du composant Error404 en cas d'erreur
         return <Error404 />;
     }
 
     return (
-        // Affichage du composant Hello en fonction des données utilisateur
         <div>
-            {userData && <Hello userInfos={userData} />} 
+            {/* Accueil personnalisé de l'utilisateur */}
+            {userData && <Hello userInfos={userData} />}
+            {/* Graphiques */}
+            {activityData && <ActivityChart activityData={activityData} />}
+            {averageData && <AverageChart averageData={averageData} />}
+            {performanceData && <PerformanceChart performanceData={performanceData} />}
         </div>
     );
 }
 
 export default DashBoard;
+
 
