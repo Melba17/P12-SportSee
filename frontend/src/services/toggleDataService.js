@@ -2,8 +2,8 @@ import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE 
 import { getUserMainData, getUserActivityData, getUserAverageSessionsData, getUserPerformanceData } from './apiService';
 import { formatUserMainData, formatUserActivityData, formatUserAverageSessionsData, formatUserPerformanceData } from './dataFormatter'; // Appel au Formatter pour les données mockées
 
-// Possibilité de changement manuel de la valeur de cette constante pour basculer entre données Mockées ou calls API réels
-const useMock = false; // true = données mockées, false = API réelle
+
+const useMock = false; // Bascule manuelle entre true = données mockées et false = calls API réels
 
 /**
  * Récupère les données principales d'un utilisateur (mockées ou réelles)
@@ -21,7 +21,7 @@ export async function fetchUserMainData(userId) {
             if (!user) {
                 throw new Error(`Utilisateur introuvable pour l'ID ${userId} dans les données mockées.`);
             }
-            return formatUserMainData(user); // Formatage pour les données mockées
+            return formatUserMainData(user); // Formatage pour les données mockées 
         } catch {
             return null; 
         }
@@ -87,7 +87,6 @@ export async function fetchUserPerformanceData(userId) {
             }
             return formatUserPerformanceData(user); 
         } catch {
-            // console.error("Erreur dans fetchUserPerformanceData (mock) :", error.message);
             return null; 
         }
     } else {

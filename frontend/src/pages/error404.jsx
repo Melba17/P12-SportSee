@@ -9,7 +9,6 @@ import { useNavigate } from 'react-router-dom';
  */
 function Error404() {
   const navigate = useNavigate(); // Hook permettant de naviguer entre les pages ou routes de manière programmatique (déclenché par le code)
-  // Offre la possibilité d'aller en avant, en arrière ou de remplacer une entrée (chemin) dans l'historique du navigateur
 
   const handleGoBack = () => {
     navigate(-1); // Retourne à la page précédente dans l'historique (ici le Tableau de bord de l'utilisateur)

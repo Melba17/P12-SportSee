@@ -1,0 +1,53 @@
+.score-chart {
+    position: absolute;
+    top: 815px;
+    left: 63.8%; 
+    transform: translate(-50%, -50%); /* Ajustement pour un centrage parfait */
+    width: 18%; 
+    background-color: #fbfbfb; 
+    border-radius: 5px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+    @media screen and (max-width: 1285px) {
+      left: 67%;
+    }
+    @media screen and (max-width: 1150px) {
+      left: 68.5%;
+    }
+
+    .score-title {
+      position: absolute;
+      top: 22px;
+      left: 25px;
+      font-size: 15px;
+      color: #20253A;
+      font-weight: 500;
+    }
+
+    .score-center-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    
+    .score-percentage {
+      font-size: 26px;
+      font-weight: bold;
+      color: #282D30;
+      margin-bottom: 3px;
+    }
+    
+    .score-description {
+      font-size: 16px;
+      font-weight: 500;
+      color: #74798C;
+      line-height: 1.6;
+    }
+  }
+  
+  

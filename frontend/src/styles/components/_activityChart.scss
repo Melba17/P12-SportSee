@@ -2,7 +2,7 @@
 .activity-chart {
   position: absolute;
   top: 460px;
-  right: -55px;
+  right: -40px;
   transform: translate(-50%, -50%);
   width: 60%;
   background-color: #fbfbfb;
@@ -16,7 +16,7 @@
     right: -70px;
   }
   @media screen and (max-width: 1150px) {
-    right: -90px;
+    right: -80px;
   }
   
   .chart-header {
@@ -63,7 +63,7 @@
 }
 
 /** InfoBulle **/
-.custom-tooltip {
+.custom-tooltip.default {
   background: #E60000;
   color: #FFFFFF;
   padding: 10px;

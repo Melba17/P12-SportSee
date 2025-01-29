@@ -10,11 +10,32 @@ export function formatUserMainData(userData) {
         lastName: userData.userInfos.lastName,
         age: userData.userInfos.age,
         score: userData.todayScore || userData.score, // Gestion des deux noms possibles
-        keyData: {
-            Calories: userData.keyData.calorieCount,
-            Protéines: userData.keyData.proteinCount,
-            Glucides: userData.keyData.carbohydrateCount,
-            Lipides: userData.keyData.lipidCount,
+        // Résumé nutritionnel
+        keyData: { 
+            Calories: { 
+                value: userData.keyData.calorieCount,
+                icon: "../keyDataIcons/calories.svg",
+                label: "Calories",
+                unit: "kCal"
+            },
+            Protéines: { 
+                value: userData.keyData.proteinCount,
+                icon: "../keyDataIcons/proteines.svg",
+                label: "Protéines",
+                unit: "g"
+            },
+            Glucides: { 
+                value: userData.keyData.carbohydrateCount,
+                icon: "../keyDataIcons/glucides.svg",
+                label: "Glucides",
+                unit: "g"
+            },
+            Lipides: { 
+                value: userData.keyData.lipidCount,
+                icon: "../keyDataIcons/lipides.svg",
+                label: "Lipides",
+                unit: "g"
+            },
         },
     };
 }
@@ -66,7 +87,8 @@ export function formatUserPerformanceData(performanceData) {
 
     // Formate et traduit les données
     return performanceData.data.map(perf => ({
-        type: frenchTranslation[kindMapping[perf.kind]] || kindMapping[perf.kind], // Traduction en français ou valeur par défaut
+        type: frenchTranslation[kindMapping[perf.kind]], // Traduction en français 
         value: perf.value,
-    }));
+    }))
+    .reverse(); // Inverse simplement l'ordre des éléments à afficher
 }

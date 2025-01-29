@@ -26,7 +26,7 @@ function Hello({ userInfos }) {
 
 Hello.propTypes = {
     userInfos: PropTypes.shape({
-    firstName: PropTypes.string, // Valide uniquement le prénom
+    firstName: PropTypes.string, // Valide uniquement le prénom dans userInfos
   }).isRequired,
 };
 

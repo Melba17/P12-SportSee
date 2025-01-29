@@ -11,29 +11,30 @@ function CustomTick(props) {
   let dy = 0;
 
   switch (value) {
-    case "Cardio":
-      dy = -10;  
-      break;
-    case "Force":
-      dy = 16;
-      break;
     case "Intensité":
-      dx = 5;
-      dy = -2; 
+      dx = 1;
+      dy = -6; 
+      break;
+      case "Endurance":
+      dy = 13; 
+      dx = 1;
+      break; 
+    case "Cardio":
+     dy = 2;  
+      break;
+    case "Vitesse":
+      dx = -3; 
       break;
     case "Énergie":
-      dx = -5;
-      dy = -2; 
+      dx = 6;
+      dy = 12; 
       break;
-      case "Vitesse":
-      dy = 14; 
+    case "Force":
+      dy = 10;
+      dx = -3;
       break;
     default:
       break;
-    case "Endurance":
-      dy = 16; 
-      dx = -15;
-      break; 
   }
 
   return (
@@ -55,7 +56,7 @@ CustomTick.propTypes = {
   }),
   x: PropTypes.number, 
   y: PropTypes.number, 
-  textAnchor: PropTypes.string // Alignement du texte
+  textAnchor: PropTypes.string 
 };
 
 
@@ -73,7 +74,7 @@ CustomTick.propTypes = {
 function PerformanceChart({ performanceData }) {
   return (
     <div className="performance-chart">
-      <ResponsiveContainer width="100%" height={260}>
+      <ResponsiveContainer width="100%" height={250}>
         <RadarChart cx="50%" cy="50%" outerRadius="70%" data={performanceData}>
           {/* Grille concentrique sans lignes radiales */}
           <PolarGrid stroke="#fff" strokeOpacity={1} radialLines={false} />

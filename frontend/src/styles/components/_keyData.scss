@@ -1,0 +1,104 @@
+.keydata-list {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 36px; 
+    top: 619px;
+    right: -55px;
+    transform: translate(-50%, -50%);
+
+   
+
+    @media screen and (max-width: 1285px) {
+        right: -60px;
+      }
+
+    @media screen and (max-width: 1180px) {
+        right: -50px;
+      }
+    
+      @media screen and (max-width: 1080px) {
+        right: -70px;
+      }
+
+}
+  
+  .keydata-container {
+        display: flex;
+        align-items: center;
+        background-color: #fbfbfb;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+        width: 258px;
+        height: 124px;
+
+        @media screen and (max-width: 1285px) {
+            width: 220px;
+          }
+        
+          @media screen and (max-width: 1180px) {
+            width: 180px;
+            padding: 10px;
+          }
+  
+        
+        .keydata-icon {
+            margin-right: 10px;
+            margin-left: 12px;
+
+            @media screen and (max-width: 1285px) {
+                width: 30px;
+                height: 30px;
+                margin-bottom: 25px;
+              }
+
+        }
+        
+        .keydata-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 15px;
+            gap: 8px;
+
+            @media screen and (max-width: 1285px) {
+                margin-left: 35px;
+              }
+
+            @media screen and (max-width: 1180px) {
+                margin-left: 38px;
+              }
+        }
+
+        .keydata-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: #282d30;
+            margin: 0;
+            
+            @media screen and (max-width: 1285px) {
+                font-size: 16px
+              }
+        }
+
+        .keydata-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #74798c;
+            margin: 0;
+
+            @media screen and (max-width: 1285px) {
+                font-size: 10px
+              }
+        }
+    }
+ 
+  
+  
+  
+  
+ 
+  
+  
+  

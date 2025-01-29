@@ -5,9 +5,13 @@
 @use './components/activityChart';
 @use './components/averageChart';
 @use './components/performanceChart';
+@use './components/scoreChart';
+@use './components/keyData';
+@use './components/loading';
 // Import du style général
 @use './utils/base';
 // Import des styles des pages
 @use './pages/error404';
+@use './pages/serverError';
 // Import de la police Roboto
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');

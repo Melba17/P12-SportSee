@@ -1,30 +1,6 @@
 import PropTypes from "prop-types";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"; // Import des composants nécessaires que l'on peut personnaliser et assembler pour créer des graphiques adaptés au projet
-
-/**
- * Affiche un tooltip personnalisé avec les données de poids et de calories
- * lorsque le survol du graphique est actif.
- *
- * @param {boolean} active - Indique si le tooltip est actif.
- * @param {Array<Object>} payload - Données à afficher dans le tooltip (poids et calories).
- * @returns {JSX.Element|null} Tooltip personnalisé ou `null` si inactif.
- */
-function CustomTooltip({ active, payload }) { // active = lorsqu'on survole le graphique 
-  if (active && payload && payload.length) {
-    return (
-      <div className="custom-tooltip">
-        <p>{`${payload[0].value}kg`}</p> {/* 1ère barre associée au dataKey="kilogram"*/}
-        <p>{`${payload[1].value}Kcal`}</p> {/* 2ème barre associée au dataKey="calories"*/}
-      </div>
-    );
-  }
-  return null;
-}
-// Pas de isRequired pour éviter des erreurs en console si on ne survole pas le graphique (non active)
-CustomTooltip.propTypes = {
-  active: PropTypes.bool,
-  payload: PropTypes.array,
-};
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"; 
+import CustomTooltip from "../components/customToolTip";
 
 /**
  * Calcule la plage de poids (minimum et maximum) à partir des données fournies,
@@ -35,13 +11,13 @@ CustomTooltip.propTypes = {
  */
 function getWeightRange(data) {
   const weights = data.map((item) => item.kilogram);
-  let minWeight = Math.min(...weights);
-  let maxWeight = Math.max(...weights);
+  let minWeight = Math.min(...weights); // retourne la valeur minimum
+  let maxWeight = Math.max(...weights); // retourne la valeur maximum
 
-  // Ajoute une marge pour que tous les poids s'affichent
+  // Ajoute une marge de 1 pour que tous les barres poids s'affichent
   const margin = 1; 
-  minWeight = Math.floor(minWeight - margin);
-  maxWeight = Math.ceil(maxWeight + margin);
+  minWeight = Math.floor(minWeight - margin); // Arrondi vers le bas
+  maxWeight = Math.ceil(maxWeight + margin); // Arrondi vers le haut
 
   return { minWeight, maxWeight };
 }
@@ -50,13 +26,13 @@ function getWeightRange(data) {
  * Générer des ticks dynamiques pour afficher 3 lignes horizontales.
  */
 function generateTicks(min, max, step = 1) {
+  // Condition qui vérifie si l'écart (max - min) entre deux valeurs est plus petit que step...
   if (max - min < step) {
-    max = min + step; // Force un écart minimal
+    max = min + step; // ... si c'est le cas, force un écart minimal
   }
   const mid = Math.round((min + max) / 2); // Calcul de la valeur centrale
   return [min, mid, max];
 }
-
 
 /**
  * Composant ActivityChart
@@ -71,8 +47,8 @@ function generateTicks(min, max, step = 1) {
  * @returns {JSX.Element} Graphique interactif représentant l'activité quotidienne.
  */
 function ActivityChart({ activityData }) {
-  const { minWeight, maxWeight } = getWeightRange(activityData);
-  const ticks = generateTicks(minWeight, maxWeight, 1);
+  const { minWeight, maxWeight } = getWeightRange(activityData); // Barres poids noires
+  const ticks = generateTicks(minWeight, maxWeight, 1); // Lignes en pointillés horizontales
 
   return (
     // Entête //
@@ -106,18 +82,19 @@ function ActivityChart({ activityData }) {
           <YAxis
             dataKey="kilogram"
             orientation="right"
-            domain={[minWeight, maxWeight]} // Détermine la plage de valeurs (minimum et maximum)
+            domain={[minWeight, maxWeight]} // Détermine la plage de valeurs 
             ticks={ticks} // Génération dynamique des ticks
             axisLine={false}  
             tickLine={false}
             tick={{ fontSize: 14, fill: "#9B9EAC", dx: 30 }} // Repères visuels affichés le long de l'axe Y
           />
           <YAxis
-            yAxisId="calories" // Créer un axe supplémentaire pour associer les barres des calories à une échelle différente de celle des kilogrammes, même si elle est visuellement cachée
+            yAxisId="calories" // Créer un axe Y supplémentaire pour associer les barres des calories à une échelle différente de celle des kilogrammes, même si elle est visuellement cachée
             hide={true} 
             domain={["dataMin - 50", "dataMax + 50"]} // Ajuste l'échelle des calories avec des marges de ±50 kcal sur l'échelle de l'axe Y
           />
-          <Tooltip content={<CustomTooltip />} cursor={{ fill: "#C4C4C4", opacity: 0.3 }} /> {/** cursor = zone grisée qui apparaît lorsqu'on survole le graphique **/}
+          <Tooltip content={<CustomTooltip type="default" />
+          } cursor={{ fill: "#C4C4C4", opacity: 0.3 }} /> 
           <Bar
             dataKey="kilogram"
             fill="#282D30"
