@@ -1,6 +1,6 @@
 /**
  * Formatte les données principales d'un utilisateur
- * @param {Object} userData - Données de l'utilisateur provenant de l'API
+ * @param {Object} userData - Données de l'utilisateur 
  * @returns {Object} Données formatées
  */
 export function formatUserMainData(userData) {
@@ -42,7 +42,7 @@ export function formatUserMainData(userData) {
 
 /**
  * Formatte les données d'activité d'un utilisateur
- * @param {Object} activityData - Données d'activité provenant de l'API
+ * @param {Object} activityData - Données d'activité 
  * @returns {Array<Object>} Données formatées
  */
 export function formatUserActivityData(activityData) {
@@ -55,7 +55,7 @@ export function formatUserActivityData(activityData) {
 
 /**
  * Formatte les données de sessions moyennes
- * @param {Object} averageData - Données des sessions moyennes provenant de l'API
+ * @param {Object} averageData - Données des sessions moyennes 
  * @returns {Array<Object>} Données formatées
  */
 export function formatUserAverageSessionsData(averageData) {
@@ -70,7 +70,7 @@ export function formatUserAverageSessionsData(averageData) {
 
 /**
  * Formatte les données de performance d'un utilisateur
- * @param {Object} performanceData - Données de performance provenant de l'API
+ * @param {Object} performanceData - Données de performance 
  * @returns {Object} Données formatées
  */
 export function formatUserPerformanceData(performanceData) {

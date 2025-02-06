@@ -59,6 +59,7 @@ export async function getUserActivityData(userId) {
 /**
  * Récupère les données des sessions moyennes d'un utilisateur depuis l'API et les formate.
  * 
+ * @async
  * @param {number} userId - ID de l'utilisateur.
  * @returns {Promise<Array<Object>|null>} Données formatées ou `null` en cas d'erreur.
  */
@@ -69,6 +70,7 @@ export async function getUserAverageSessionsData(userId) {
 /**
  * Récupère les données de performance d'un utilisateur depuis l'API et les formate.
  * 
+ * @async
  * @param {number} userId - ID de l'utilisateur.
  * @returns {Promise<Array<Object>|null>} Données formatées ou `null` en cas d'erreur.
  */

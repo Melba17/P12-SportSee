@@ -3,7 +3,7 @@ import { getUserMainData, getUserActivityData, getUserAverageSessionsData, getUs
 import { formatUserMainData, formatUserActivityData, formatUserAverageSessionsData, formatUserPerformanceData } from './dataFormatter'; // Appel au Formatter pour les données mockées
 
 
-const useMock = false; // Bascule manuelle entre true = données mockées et false = calls API réels
+const useMock = false; // Bascule manuelle entre true = données mockées et false = calls API (données réelles)
 
 /**
  * Récupère les données principales d'un utilisateur (mockées ou réelles)
@@ -13,9 +13,8 @@ const useMock = false; // Bascule manuelle entre true = données mockées et fal
  * @param {number} userId - ID de l'utilisateur
  * @returns {Promise<Object>} Données formatées ou `null` en cas d'erreur
  */
-export async function fetchUserMainData(userId) {
+async function fetchUserMainData(userId) {
     if (useMock) {
-        console.log("Utilisation des données mockées : USER_MAIN_DATA");
         try {
             const user = USER_MAIN_DATA.find(user => user.id === userId);
             if (!user) {
@@ -23,11 +22,10 @@ export async function fetchUserMainData(userId) {
             }
             return formatUserMainData(user); // Formatage pour les données mockées 
         } catch {
-            return null; 
+            return null; // Toutes autres erreurs de données (mal formattées, undefined ou mauvais import etc..)
         }
     } else {
-        console.log("Appel à l'API réelle : getUserMainData");
-        // Appel API réel avec gestion des erreurs et formatage dans getUserMainData
+        // Appel API (données réelles) avec gestion des erreurs et formatage 
         return await getUserMainData(userId);
     }
 }
@@ -37,7 +35,7 @@ export async function fetchUserMainData(userId) {
  * @param {number} userId - ID de l'utilisateur
  * @returns {Promise<Array<Object>>} Données d'activité formatées ou `null` en cas d'erreur
  */
-export async function fetchUserActivityData(userId) {
+async function fetchUserActivityData(userId) {
     if (useMock) {
         try {
             const user = USER_ACTIVITY.find(user => user.userId === userId);
@@ -58,7 +56,7 @@ export async function fetchUserActivityData(userId) {
  * @param {number} userId - ID de l'utilisateur
  * @returns {Promise<Array<Object>>} Données des sessions moyennes formatées ou `null` en cas d'erreur
  */
-export async function fetchUserAverageSessionsData(userId) {
+async function fetchUserAverageSessionsData(userId) {
     if (useMock) {
         try {
             const user = USER_AVERAGE_SESSIONS.find(user => user.userId === userId);
@@ -78,7 +76,7 @@ export async function fetchUserAverageSessionsData(userId) {
  * @param {number} userId - ID de l'utilisateur
  * @returns {Promise<Array<Object>>} Données de performance formatées ou `null` en cas d'erreur
  */
-export async function fetchUserPerformanceData(userId) {
+async function fetchUserPerformanceData(userId) {
     if (useMock) {
             try {
                 const user = USER_PERFORMANCE.find(user => user.userId === userId);
@@ -91,5 +89,38 @@ export async function fetchUserPerformanceData(userId) {
         }
     } else {
         return await getUserPerformanceData(userId); 
+    }
+}
+
+/**
+ * Récupère les données utilisateur (mockées ou réelles).
+ * 
+ * @async
+ * @param {string | number} userId - ID utilisateur.
+ * @returns {Promise<Object>} Données utilisateur ou erreur ('404' ou 'server').
+ */
+export async function fetchData(userId) {
+    console.log(`En mode données ${useMock ? "mockées" : "réelles"}.`); // Affiche le mode utilisé
+    try {
+        const [userData, activityData, averageData, performanceData] = await Promise.all([
+            fetchUserMainData(parseInt(userId)),  // Convertit userId en nombre entier
+            fetchUserActivityData(parseInt(userId)),
+            fetchUserAverageSessionsData(parseInt(userId)),
+            fetchUserPerformanceData(parseInt(userId)),
+        ]);
+
+        if (!userData || !activityData || !averageData || !performanceData) {
+            throw new Error("404");
+        }
+
+        return { userData, activityData, averageData, performanceData, errorType: null };
+    } catch (error) {
+        return {
+            userData: null,
+            activityData: null,
+            averageData: null,
+            performanceData: null,
+            errorType: error.message === "404" ? "404" : "server"
+        };
     }
 }

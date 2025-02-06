@@ -14,7 +14,7 @@ function KeyData({ icon, value, unit, label }) {
   return (
     <div className="keydata-container">
       <div className="keydata-icon">
-        <img src={icon} alt={`${label} icon`} />
+        <img src={icon} alt={`${label} icone`} />
       </div>
       <div className="keydata-info">
         <p className="keydata-value">

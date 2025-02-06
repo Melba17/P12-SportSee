@@ -11,26 +11,21 @@ import CustomTooltip from "../components/customToolTip";
  */
 function getWeightRange(data) {
   const weights = data.map((item) => item.kilogram);
-  let minWeight = Math.min(...weights); // retourne la valeur minimum
-  let maxWeight = Math.max(...weights); // retourne la valeur maximum
+  let minWeight = Math.min(...weights); // retourne la valeur minimum de la liste de valeurs du tableau poids
+  let maxWeight = Math.max(...weights); 
 
   // Ajoute une marge de 1 pour que tous les barres poids s'affichent
   const margin = 1; 
-  minWeight = Math.floor(minWeight - margin); // Arrondi vers le bas
-  maxWeight = Math.ceil(maxWeight + margin); // Arrondi vers le haut
-
+  minWeight = minWeight - margin; 
+  maxWeight = maxWeight + margin; 
   return { minWeight, maxWeight };
 }
 
 /**
  * Générer des ticks dynamiques pour afficher 3 lignes horizontales.
  */
-function generateTicks(min, max, step = 1) {
-  // Condition qui vérifie si l'écart (max - min) entre deux valeurs est plus petit que step...
-  if (max - min < step) {
-    max = min + step; // ... si c'est le cas, force un écart minimal
-  }
-  const mid = Math.round((min + max) / 2); // Calcul de la valeur centrale
+function generateTicks(min, max) {
+  const mid = Math.round((min + max) / 2); // Calcul de la valeur centrale en arrondissant au nombre entier le plus proche
   return [min, mid, max];
 }
 
@@ -48,7 +43,7 @@ function generateTicks(min, max, step = 1) {
  */
 function ActivityChart({ activityData }) {
   const { minWeight, maxWeight } = getWeightRange(activityData); // Barres poids noires
-  const ticks = generateTicks(minWeight, maxWeight, 1); // Lignes en pointillés horizontales
+  const ticks = generateTicks(minWeight, maxWeight); // Lignes en pointillés horizontales
 
   return (
     // Entête //
@@ -83,13 +78,13 @@ function ActivityChart({ activityData }) {
             dataKey="kilogram"
             orientation="right"
             domain={[minWeight, maxWeight]} // Détermine la plage de valeurs 
-            ticks={ticks} // Génération dynamique des ticks
+            ticks={ticks} // Génération dynamique des lignes horizontales
             axisLine={false}  
             tickLine={false}
             tick={{ fontSize: 14, fill: "#9B9EAC", dx: 30 }} // Repères visuels affichés le long de l'axe Y
           />
           <YAxis
-            yAxisId="calories" // Créer un axe Y supplémentaire pour associer les barres des calories à une échelle différente de celle des kilogrammes, même si elle est visuellement cachée
+            yAxisId="calories" // Créer un axe Y supplémentaire pour associer les barres des calories à une échelle de valeurs différente de celle des kilogrammes, même si elle est visuellement cachée
             hide={true} 
             domain={["dataMin - 50", "dataMax + 50"]} // Ajuste l'échelle des calories avec des marges de ±50 kcal sur l'échelle de l'axe Y
           />

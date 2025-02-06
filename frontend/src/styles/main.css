@@ -383,6 +383,51 @@ body {
   font-family: "Roboto", sans-serif, Arial, sans-serif;
 }
 
+.welcome-message {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  margin-left: 550px;
+  margin-top: 150px;
+}
+@media screen and (max-width: 1150px) {
+  .welcome-message {
+    margin-left: 400px;
+  }
+}
+.welcome-message h2 {
+  font-size: 2rem;
+  color: #333;
+}
+.welcome-message p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 20px;
+}
+.welcome-message .user-selection {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+.welcome-message .user-selection .user-link {
+  padding: 12px 24px;
+  background-color: #ff4f4f;
+  border-style: none;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.welcome-message .user-selection .user-link:hover {
+  background-color: #df2222;
+  transform: scale(1.05);
+}
+
 .error404 {
   position: absolute;
   display: flex;
@@ -420,17 +465,6 @@ body {
   .error404__message {
     margin-left: 200px;
   }
-}
-.error404__link {
-  font-size: 1.125rem;
-  font-weight: 500;
-  color: black;
-  text-decoration: underline;
-  transition: color 0.3s ease;
-}
-.error404__link:hover {
-  color: red;
-  cursor: pointer;
 }
 
 .server-error {

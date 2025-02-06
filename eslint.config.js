@@ -37,6 +37,7 @@ export default [
       'react/react-in-jsx-scope': 'off',
       // Supprimer les avertissements pour React comme variable inutilisée
       'no-unused-vars': ['error', { varsIgnorePattern: 'React' }],
+      'quotes': 'off', // Désactive complètement la règle des guillemets
     },
   },
 ]

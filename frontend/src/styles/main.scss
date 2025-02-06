@@ -11,6 +11,7 @@
 // Import du style général
 @use './utils/base';
 // Import des styles des pages
+@use './pages/welcome';
 @use './pages/error404';
 @use './pages/serverError';
 // Import de la police Roboto

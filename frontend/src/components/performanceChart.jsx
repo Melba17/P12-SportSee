@@ -85,7 +85,7 @@ function PerformanceChart({ performanceData }) {
             tick={<CustomTick />}
           />
 
-          {/* Forme radar */}
+          {/* Forme rouge */}
           <Radar
             name="Performance"
             dataKey="value"

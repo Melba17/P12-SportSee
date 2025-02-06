@@ -47,13 +47,13 @@ CustomCursor.propTypes = {
 function AverageChart({ averageData }) {
   const [cursorX, setCursorX] = useState(null); // State du curseur 
 
-  //Données fictives
+  // Données fictives
   const adjustedData = [
     { day: "", sessionLength: averageData[0].sessionLength },
     ...averageData,
     { day: "", sessionLength: averageData[averageData.length - 1].sessionLength },
   ];
-  // Dégradé à appliqué à la Courbe
+  // Description du dégradé
   const renderGradient = () => {
     if (cursorX === null) {
       return (
@@ -67,9 +67,9 @@ function AverageChart({ averageData }) {
     const cursorPositionPercent = (cursorX / 250) * 100;
     return (
       <>
-        {/* offset = décalage => La couleur commence à devenir plus claire à 5% à gauche de la position du curseur, avec une opacité de 0.6. */}
+        {/* offset = décalage => La couleur commence à se grisée à 5% à gauche de la position du curseur, avec une opacité de 0.6. */}
         <stop offset={`${cursorPositionPercent - 5}%`} stopColor="rgba(255, 255, 255, 0.6)" />
-        {/* La couleur est complètement blanche (opacité de 1) au niveau exact du curseur. */}
+        {/* La couleur est complètement blanche (opacité de 1) à partir de la position exacte du curseur en se prolongeant sur la droite. */}
         <stop offset={`${cursorPositionPercent}%`} stopColor="rgba(255, 255, 255, 1)" />
       </>
     );
@@ -88,7 +88,7 @@ function AverageChart({ averageData }) {
           
           onMouseLeave={() => setCursorX(null)}
         >
-          {/* Style utilisant le dégradé à appliquer sur la courbe*/}
+          {/* Style qui définit le dégradé à appliquer sur la courbe */}
           <defs>
             <linearGradient id="dynamicLineGradient" x1="0" y1="0" x2="1" y2="0">
               {renderGradient()}
@@ -116,7 +116,7 @@ function AverageChart({ averageData }) {
           <Line
             type="natural"
             dataKey="sessionLength"
-            stroke="url(#dynamicLineGradient)" // Applique le dégradé
+            stroke="url(#dynamicLineGradient)" // Application effective du dégradé
             strokeWidth={2}
             dot={false}
             activeDot={({ cx, cy }) => (
