@@ -69,12 +69,22 @@
   margin-left: 180px;
   margin-top: 40px;
 }
+@media screen and (max-width: 1150px) {
+  .hello h1 {
+    margin-left: 150px;
+  }
+}
 .hello .name {
   color: #FF0101;
 }
 .hello p {
   margin-left: 180px;
   margin-top: 20px;
+}
+@media screen and (max-width: 1150px) {
+  .hello p {
+    margin-left: 150px;
+  }
 }
 
 /** Graphique à Barres **/
@@ -98,7 +108,8 @@
 }
 @media screen and (max-width: 1150px) {
   .activity-chart {
-    right: -80px;
+    right: -120px;
+    width: 65%;
   }
 }
 .activity-chart .chart-header {
@@ -165,7 +176,8 @@
 }
 @media screen and (max-width: 1150px) {
   .average-chart {
-    left: 22.5%;
+    left: 19.5%;
+    width: 20.8%;
   }
 }
 
@@ -194,7 +206,8 @@
 }
 @media screen and (max-width: 1150px) {
   .performance-chart {
-    left: 43.4%;
+    left: 41.5%;
+    width: 20.8%;
   }
 }
 
@@ -217,7 +230,8 @@
 }
 @media screen and (max-width: 1150px) {
   .score-chart {
-    left: 68.5%;
+    left: 68.8%;
+    width: 20.8%;
   }
 }
 .score-chart .score-title {

@@ -2,7 +2,7 @@ import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE 
 import { getUserMainData, getUserActivityData, getUserAverageSessionsData, getUserPerformanceData } from './apiService';
 import { formatUserMainData, formatUserActivityData, formatUserAverageSessionsData, formatUserPerformanceData } from './dataFormatter';
 
-const useMock = true; // Bascule manuelle entre données mockées et API (données réelles)
+const useMock = false; // Bascule manuelle entre données mockées et API (données réelles)
 
 /**
  * Récupère les données principales d'un utilisateur (mockées ou réelles).
@@ -68,6 +68,7 @@ async function fetchUserPerformanceData(userId) {
     }
 }
 
+
 /**
  * Récupère les données utilisateur (mockées ou réelles).
  * 
@@ -91,6 +92,7 @@ export async function fetchData(userId) {
         }
 
         return { userData, activityData, averageData, performanceData, errorType: null };
+        
     } catch (error) {
         return {
             userData: null,

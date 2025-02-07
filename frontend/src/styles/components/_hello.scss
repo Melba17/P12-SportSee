@@ -5,6 +5,10 @@
         font-size: 3rem;
         margin-left: 180px;
         margin-top: 40px;
+
+        @media screen and (max-width: 1150px) {
+            margin-left: 150px;
+        }
     }
 
     .name {
@@ -14,5 +18,9 @@
     p {
         margin-left: 180px;
         margin-top: 20px;
+
+        @media screen and (max-width: 1150px) {
+            margin-left: 150px;
+        }
     }
 }
