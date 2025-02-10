@@ -30,7 +30,6 @@ async function fetchAndFormatData(url, formatter) {
         const data = await response.json();
         return formatter(data.data); // Formate les données reçues
     } catch (error) {
-        console.error(`Erreur capturée lors de la requête vers ${url} :`, error);
         throw error; 
     }
 }
