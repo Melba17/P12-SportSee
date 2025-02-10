@@ -11,7 +11,7 @@ import { RadialBarChart, RadialBar, ResponsiveContainer } from "recharts";
  * @returns {JSX.Element} Graphique radial interactif avec le score.
  */
 function ScoreChart({ score }) {
-  const data = [{ name: "score", value: score * 100 }]; // Convertir le score en pourcentage
+  const data = [{ value: score * 100 }]; // Convertir le score en pourcentage
 
   return (
     <div className="score-chart">
@@ -33,9 +33,7 @@ function ScoreChart({ score }) {
             y="0"
             viewBox="0 0 100 100" // Permet au graphique SVG de rester proportionnel et en place lorsque la taille de l'écran change => "position min-x ; position min-y et width height (coordonnées virtuelles internes au svg)"
             style={{
-              position: "absolute",
-              width: "100%", // Taille réelle
-              height: "100%",
+              position: "absolute"
             }}
           >
             <circle
@@ -55,7 +53,7 @@ function ScoreChart({ score }) {
       </ResponsiveContainer>
       {/* Texte central */}
       <div className="score-center-text">
-        <p className="score-percentage">{Math.round(score * 100)}%</p>
+        <p className="score-percentage">{score * 100}%</p>
         <p className="score-description">
           <span>de votre</span>
           <br />

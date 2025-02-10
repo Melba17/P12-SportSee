@@ -94,7 +94,6 @@ function ActivityChart({ activityData }) {
             dataKey="kilogram"
             fill="#282D30"
             radius={[10, 10, 0, 0]}
-            name="Poids (kg)"
             barSize={9}
           />
           <Bar
@@ -102,7 +101,6 @@ function ActivityChart({ activityData }) {
             dataKey="calories"
             fill="#E60000"
             radius={[10, 10, 0, 0]}
-            name="Calories brûlées (kCal)"
             barSize={9}
           />
         </BarChart>
