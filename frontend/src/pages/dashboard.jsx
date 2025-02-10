@@ -37,7 +37,7 @@ function DashBoard() {
 
     // État global des données utilisateur
     const [state, setState] = useState(initialState);
-
+   
     useEffect(() => {
         if (!userId) return;
 
@@ -49,6 +49,7 @@ function DashBoard() {
         };
 
         loadUserData();
+        
     }, [userId]);
 
     ////// RENDU CONDITIONNEL //////
