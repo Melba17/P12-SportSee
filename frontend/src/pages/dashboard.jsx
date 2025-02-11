@@ -43,12 +43,7 @@ function DashBoard() {
 
         setState(initialState); // Réinitialisation avant chargement des nouvelles données
 
-        const loadUserData = async () => {
-            const data = await fetchData(userId);
-            setState({ ...data, isLoading: false });
-        };
-
-        loadUserData();
+        fetchData(userId).then(data => setState({ ...data, isLoading: false }));
         
     }, [userId]);
 

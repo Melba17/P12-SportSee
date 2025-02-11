@@ -69,6 +69,7 @@ async function fetchUserPerformanceData(userId) {
 }
 
 
+
 /**
  * Récupère les données utilisateur (mockées ou réelles).
  * 
