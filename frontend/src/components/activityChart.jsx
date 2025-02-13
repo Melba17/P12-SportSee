@@ -42,7 +42,8 @@ function generateTicks(min, max) {
  * @returns {JSX.Element} Graphique interactif représentant l'activité quotidienne.
  */
 function ActivityChart({ activityData }) {
-  const { minWeight, maxWeight } = getWeightRange(activityData); // Barres poids noires
+  // Permet un affichage aéré des barres sur le graphique en adaptant l'échelle dynamiquement
+  const { minWeight, maxWeight } = getWeightRange(activityData); 
   const ticks = generateTicks(minWeight, maxWeight); // Lignes en pointillés horizontales
 
   return (
@@ -60,7 +61,7 @@ function ActivityChart({ activityData }) {
         </div>
       </div>
       {/** Graphique **/}
-      <ResponsiveContainer width="100%" height={230}>
+      <ResponsiveContainer width="100%" height={210}>
         <BarChart
           data={activityData}
           barGap={15}

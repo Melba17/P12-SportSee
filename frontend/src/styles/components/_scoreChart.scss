@@ -1,9 +1,10 @@
 .score-chart {
     position: absolute;
-    top: 815px;
+    top: 740px;
     left: 63.8%; 
     transform: translate(-50%, -50%); /* Ajustement pour un centrage parfait */
     width: 18%; 
+    height: 40vh;
     background-color: #fbfbfb; 
     border-radius: 5px; 
     display: flex;
@@ -13,10 +14,13 @@
     
     @media screen and (max-width: 1285px) {
       left: 67%;
+      height: 30vh;
     }
     @media screen and (max-width: 1150px) {
       left: 68.8%;
       width: 20.8%;
+      top: 670px;
+      height: 26vh;
     }
 
     .score-title {

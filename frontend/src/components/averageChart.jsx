@@ -77,7 +77,7 @@ function AverageChart({ averageData }) {
 
   return (
     <div className="average-chart">
-      <ResponsiveContainer width="100%" height={250}>
+      <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={adjustedData}
           margin={{ top: 10, right: 20, left: 20, bottom: 10 }}

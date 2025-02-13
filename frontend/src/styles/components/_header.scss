@@ -5,6 +5,10 @@
     background-color: black;
     height: 91px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+
+    @media screen and (max-width: 1150px) {
+        height: 84px;
+    }
     
     img {
         margin-left: 25px;
@@ -24,8 +28,9 @@
 
         }
         @media screen and (max-width: 1150px) {
-            gap: 100px;
+            gap: 110px;
             margin-right: 30px;
+            font-size: 20px;
 
         }
     }

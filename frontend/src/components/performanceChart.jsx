@@ -74,7 +74,7 @@ CustomTick.propTypes = {
 function PerformanceChart({ performanceData }) {
   return (
     <div className="performance-chart">
-      <ResponsiveContainer width="100%" height={250}>
+      <ResponsiveContainer width="100%" height="100%">
         <RadarChart cx="50%" cy="50%" outerRadius="70%" data={performanceData}>
           {/* Grille concentrique sans lignes radiales */}
           <PolarGrid stroke="#fff" strokeOpacity={1} radialLines={false} />
