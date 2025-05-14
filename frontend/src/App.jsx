@@ -4,7 +4,7 @@ import DashBoard from './pages/dashboard';
 import Error404 from './pages/error404';
 
 import Header from './components/header';
-import SideBar from './components/SideBar';
+import SideBar from './components/sidebar';
 
 ////// SYSTÈME DE ROUTAGE ////////
 
