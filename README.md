@@ -25,29 +25,50 @@ Il inclut :
 
 Fournit des données sportives à travers 4 endpoints principaux :
 
-- [http://localhost:3000/user/:id](http://localhost:3000/user/:id)
-- [http://localhost:3000/user/:id/activity](http://localhost:3000/user/:id/activity)
-- [http://localhost:3000/user/:id/average-sessions](http://localhost:3000/user/:id/average-sessions)
-- [http://localhost:3000/user/:id/performance](http://localhost:3000/user/:id/performance)
+- `GET /user/:id`
+- `GET /user/:id/activity`
+- `GET /user/:id/average-sessions`
+- `GET /user/:id/performance`
 
 Les IDs disponibles pour les utilisateurs sont : `12` et `18`.
+
+Le backend est désormais déployé sur Render à l'adresse suivante :  
+👉 [https://backend-l3p5.onrender.com](https://backend-l3p5.onrender.com)
+
+⚠️ **Remarque** : Si le service Render est en veille (inactive), il peut prendre **jusqu’à 50 secondes** pour se réveiller au premier appel.
+
+---
 
 ### **Frontend**
 
 - Tableau de bord interactif pour visualiser les données sportives.
 - Développé avec React et Vite pour des performances optimales.
+- Appelle automatiquement l'API distante via l’URL Render ci-dessus.
 
 ---
 
-## Installation et lancement
+## Installation et lancement en local (optionnel)
+
+### Lancer le backend en local (optionnel)
 
 ```bash
 cd backend
 yarn install
 yarn dev
-L'API sera disponible à l'adresse suivante : http://localhost:3000.
 
-cd ../frontend
+Cela lancera le backend sur http://localhost:3000
+➡️ Dans ce cas, il faudra modifier manuellement l'URL de l'API dans le frontend si vous ne souhaitez pas utiliser le backend déployé.
+
+Lancer le frontend
+
+cd frontend
 npm install
 npm run dev
-Le front-end sera disponible à l'adresse suivante : http://localhost:5173.
+
+Le frontend sera disponible à l'adresse suivante :
+http://localhost:5173
+
+Remarques
+Le projet peut être utilisé directement en mode production grâce au backend Render.
+
+Pour utiliser des données mockées ou locales, adaptez les appels dans le fichier de service (apiService.js).
