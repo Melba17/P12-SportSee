@@ -35,7 +35,7 @@ Les IDs disponibles pour les utilisateurs sont : `12` et `18`.
 Le backend est désormais déployé sur Render à l'adresse suivante :  
 👉 [https://backend-l3p5.onrender.com](https://backend-l3p5.onrender.com)
 
-⚠️ **Remarque** : Si le service Render est en veille (inactive), il peut prendre **jusqu’à 50 secondes** pour se réveiller au premier appel.
+⚠️ **Remarque** : Lors du premier appel, Render peut mettre jusqu’à **50 secondes** à démarrer (hébergement gratuit avec mise en veille automatique).
 
 ---
 
