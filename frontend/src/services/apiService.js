@@ -1,6 +1,9 @@
 import { formatUserMainData, formatUserActivityData, formatUserAverageSessionsData, formatUserPerformanceData } from './dataFormatter';
 
-///// APPELS API AVEC UTILISATION DES ENDPOINTS MIS À DISPOSITION PAR LE BACKEND //////
+///// APPELS API //////
+
+const API_BASE_URL = 'https://backend-l3p5.onrender.com';
+
 
 /**
  * Effectue une requête `fetch` pour récupérer des données depuis une URL, vérifie le statut HTTP
@@ -41,7 +44,7 @@ async function fetchAndFormatData(url, formatter) {
  * @returns {Promise<Object|null>} Données formatées.
  */
 export async function getUserMainData(userId) {
-    const url = `http://localhost:3000/user/${userId}`;
+    const url = `${API_BASE_URL}/user/${userId}`;
     return fetchAndFormatData(url, formatUserMainData);
 }
 /**
@@ -52,7 +55,7 @@ export async function getUserMainData(userId) {
  * @returns {Promise<Array<Object>|null>} Données formatées.
  */
 export async function getUserActivityData(userId) {
-    const url = `http://localhost:3000/user/${userId}/activity`;
+    const url = `${API_BASE_URL}/user/${userId}/activity`;
     return fetchAndFormatData(url, formatUserActivityData);
 }
 /**
@@ -63,7 +66,7 @@ export async function getUserActivityData(userId) {
  * @returns {Promise<Array<Object>|null>} Données formatées ou `null` en cas d'erreur.
  */
 export async function getUserAverageSessionsData(userId) {
-    const url = `http://localhost:3000/user/${userId}/average-sessions`;
+    const url = `${API_BASE_URL}/user/${userId}/average-sessions`;
     return fetchAndFormatData(url, formatUserAverageSessionsData);
 }
 /**
@@ -74,6 +77,6 @@ export async function getUserAverageSessionsData(userId) {
  * @returns {Promise<Array<Object>|null>} Données formatées ou `null` en cas d'erreur.
  */
 export async function getUserPerformanceData(userId) {
-    const url = `http://localhost:3000/user/${userId}/performance`;
+    const url = `${API_BASE_URL}/user/${userId}/performance`;
     return fetchAndFormatData(url, formatUserPerformanceData);
 }
