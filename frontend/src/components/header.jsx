@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom';
+
+
 /**
  * Composant Header
  * Affiche l'en-tête de l'application avec un logo et un menu de navigation.
@@ -9,7 +12,7 @@ function Header() {
         <header className="header">
             <img src="/logo.svg" alt="logo SportSee"/>
             <nav>
-                <div>Accueil</div>
+                <Link to="/">Accueil</Link>
                 <div>Profil</div>
                 <div>Réglage</div>
                 <div>Communauté</div>
