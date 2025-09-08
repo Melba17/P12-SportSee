@@ -68,6 +68,7 @@ function ActivityChart({ activityData }) {
           margin={{ top: 10, right: 10, left: 20, bottom: 5 }}
         >
           <CartesianGrid strokeDasharray="2 2" horizontal vertical={false} />
+          {/**Abscisse → correspond à l’axe horizontal (l’axe des x)**/}
           <XAxis
             dataKey="day"
             tickLine={false}
@@ -75,6 +76,7 @@ function ActivityChart({ activityData }) {
             tick={{ fontSize: 14, fill: "#9B9EAC", dy: 15 }}
             padding={{ left: -38  , right: -38 }}
           />
+          {/**Ordonnée → correspond à l’axe vertical (l’axe des y)**/}
           <YAxis
             dataKey="kilogram"
             orientation="right"
